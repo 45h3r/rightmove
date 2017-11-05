@@ -29,7 +29,7 @@ with Browser("phantomjs") as browser:
     brower.select('maxPrice', price_high)
     brower.select('minBedrooms', bed_low)
     brower.select('maxBedrooms', bed_high)
-    button2 = brower.find_by_css("button[id='submit]")
+    button2 = brower.find_by_css("button[id='submit']")
     button2.click()
 
     # Scrape the data you like...
