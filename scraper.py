@@ -3,13 +3,47 @@
 
 import scraperwiki
 import lxml.html
+
+from splinter import Browser
+
+location_name = 'Greater Manchester'
+price_low = 500000
+price_high = 100000
+beds_low = 1
+beds_high = 3
+
+with Browser("phantomjs") as browser:
+    # Optional, but make sure large enough that responsive pages don't
+    # hide elements on you...
+    browser.driver.set_window_size(1280, 1024)
+
+    # Open the page you want...
+    browser.visit("http://www.rightmove.co.uk/")
+
+    # submit the search form...
+    browser.fill_form(location_name, form_id='initialSearch', name='searchLocation')
+    button = browser.find_by_css("button[name='buy']")
+    button.click()
+    
+    brower.select(name='minPrice', price_low)
+    brower.select(name='maxPrice', price_high)
+    brower.select(name='minBedrooms', bed_low)
+    brower.select(name='maxBedrooms', bed_high)
+    button2 = brower.find_by_css("button[id='submit]")
+    button2.click()
+
+    # Scrape the data you like...
+    links = browser.find_by_css(".search-results .list-group-item")
+    for link in links:
+        print link['href']
+
 #
 # # Read in a page
-html = scraperwiki.scrape("http://www.rightmove.co.uk/")
+#html = scraperwiki.scrape("http://www.rightmove.co.uk/")
 #
 # # Find something on the page using css selectors
-root = lxml.html.fromstring(html)
-root.cssselect("div[align='left']")
+#root = lxml.html.fromstring(html)
+#root.cssselect("div[align='left']")
 #
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
