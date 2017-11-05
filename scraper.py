@@ -25,10 +25,10 @@ with Browser("phantomjs") as browser:
     button = browser.find_by_css("button[name='buy']")
     button.click()
     
-    brower.select(name='minPrice', price_low)
-    brower.select(name='maxPrice', price_high)
-    brower.select(name='minBedrooms', bed_low)
-    brower.select(name='maxBedrooms', bed_high)
+    brower.select('minPrice', price_low)
+    brower.select('maxPrice', price_high)
+    brower.select('minBedrooms', bed_low)
+    brower.select('maxBedrooms', bed_high)
     button2 = brower.find_by_css("button[id='submit]")
     button2.click()
 
