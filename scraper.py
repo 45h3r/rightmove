@@ -33,7 +33,7 @@ with Browser("phantomjs") as browser:
     button2.click()
 
     # Scrape the data you like...
-    links = browser.find_by_css(".search-results .list-group-item")
+    links = browser.find_link_by_partial_href('http://www.rightmove.co.uk/property-for-sale/property-')
     for link in links:
         print link['href']
 
