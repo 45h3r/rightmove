@@ -21,7 +21,7 @@ with Browser("phantomjs") as browser:
     browser.visit("http://www.rightmove.co.uk/")
 
     # submit the search form...
-    browser.fill_form(location_name, form_id='initialSearch', name='searchLocation')
+    browser.fill('searchLocation', location_name)
     button = browser.find_by_css("button[name='buy']")
     button.click()
     
