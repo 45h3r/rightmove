@@ -6,15 +6,13 @@ import lxml.html
 
 from splinter import Browser
 
-executable_path = {'executable_path':'./phantomjs'}
-
 location_name = 'Greater Manchester'
 price_low = 50000
 price_high = 100000
 bed_low = 1
 bed_high = 3
 
-with Browser('phantomjs', **executable_path) as browser:
+with Browser('phantomjs') as browser:
     # Optional, but make sure large enough that responsive pages don't
     # hide elements on you...
     browser.driver.set_window_size(1280, 1024)
